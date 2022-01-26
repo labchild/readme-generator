@@ -6,23 +6,46 @@ function renderLicenseBadge(license) {
   }
   
   return `
-  ![license](https://img.shields.io/badge/license-${license}-brightgreen)
-  `
+  ![${license}](https://img.shields.io/badge/license-${license[0].replaceAll(' ', '%20')}-brightgreen)`
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (!license) {
+    return '';
+  }
+
+  switch (license) {
+    case 'MIT':
+      return `[${license}](https://opensource.org/licenses/MIT)`;
+    case 'ISC':
+      return `[${license}](https://opensource.org/licenses/ISC)`;
+    case 'Apache License 2.0':
+      return `[${license}](https://opensource.org/licenses/Apache-2.0)`;
+    case 'Mozilla Public License 2.0':
+      return `[${license}](https://opensource.org/licenses/MPL-2.0)`;
+    case 'GNU GPLv3':
+      return `[${license}](https://opensource.org/licenses/GPL-3.0)`;
+  };
+};
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  return '#### so far so good';
+  if (!license) {
+    return '';
+  }
+
+  return `
+  ## License ${renderLicenseBadge(license)}
+  This project falls under a ${renderLicenseLink(license[0])} license.
+  `
 }
 
 // render table of contents to include user selected sections
 function renderTableOfContents({ installation, usage, license, contributors, tests }) {
-  const sections = { installation, usage, license, contributors, tests }; 
+  const sections = { installation, usage, license, contributors, tests };
   let sectionTitles = [];
 
   // create linked text for section titles
@@ -33,14 +56,13 @@ function renderTableOfContents({ installation, usage, license, contributors, tes
     // push markdown string to array
     sectionTitles.push(`[${upperCaseStr}](${str})`);
   }
-  
+
   // then map arr to return joined string to markdown template
   return `
   ### Table of Contents
   ${sectionTitles.map(title => {
     return `
-  * ${title}
-    `;
+  * ${title}`;
   }).join('')}
   * [Questions](#questions)
   `;
@@ -48,7 +70,7 @@ function renderTableOfContents({ installation, usage, license, contributors, tes
 
 // if installation included, function to handle installation section
 const renderInstallation = installation => {
-  /*if (!installation) {
+  if (!installation) {
     return '';
   }
 
@@ -56,13 +78,12 @@ const renderInstallation = installation => {
   ## Installation
   ${installation}
 
-  `;*/
-  return '#### so far so good';
+  `;
 };
 
 // render tests section
 const renderTestsSection = tests => {
-  /*if (!tests) {
+  if (!tests) {
     return '';
   }
 
@@ -70,33 +91,37 @@ const renderTestsSection = tests => {
   ## Tests
   ${tests}
 
-  `;*/
-  return '#### so far so good';
+  `;
 };
+
 
 // if include contributing, handle render section
 const renderContributingSection = ({ contributors, contributorsArr }) => {
-  /*if (!contributors) {
+  if (!contributors) {
     return '';
   }
 
-  contributorsArr.forEach( person => {
+  return 'contributors!!';
+
+  /*
+  contributorsArr.map(person => {
      return `
   ## Contributing
   * [${person.contribName}](https://github.com/${person.contribGithub})
   `;
-  });*/
-  return '#### so far so good';
+  });
+  */
 }
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const { 
-    title, 
-    description, 
-    usage, 
-    installation, 
-    license, 
+  const {
+    title,
+    description,
+    usage,
+    installation,
+    license,
     email,
     tests,
     contributors,
@@ -116,7 +141,7 @@ function generateMarkdown(data) {
   ${usage}
 
   ${renderLicenseSection(license)}
-  ${renderContributingSection(contributorsArr)}
+  ${renderContributingSection({ contributors, contributorsArr })}
   ${renderTestsSection(tests)}
   
   ## Questions 

@@ -80,7 +80,7 @@ const questions = [
         type: 'checkbox',
         name: 'license',
         message: 'Which license would you like to include for your project?',
-        choices: ['MIT', 'ISC', 'Unilicense', 'Apache license 2.0', 'Mozilla Public License 2.0', 'GNU GPLv3'],
+        choices: ['MIT', 'ISC', 'Apache License 2.0', 'Mozilla Public License 2.0', 'GNU GPLv3'],
         when: ({ licenseConfirm }) => licenseConfirm
     },
     // questions/contact
