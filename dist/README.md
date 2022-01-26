@@ -1,8 +1,8 @@
-# project
+# a title
   ![MIT](https://img.shields.io/badge/license-MIT-brightgreen)
 
   ## Description
-  description description description description description description description ^
+  a description
 
   
   ### Table of Contents
@@ -17,11 +17,11 @@
 
   
   ## Installation
-   installinstallinstall install install install install install /n installinstallinstall
+  some installation instructions
 
   
   ## Usage
-  usage  usage  usage usage usage usage /n  usage usage usage
+  some usage instructions
 
   
   ## License ![MIT](https://img.shields.io/badge/license-MIT-brightgreen)
@@ -30,11 +30,13 @@
    
   ## Contributing
   
-  * [fewa](https://github.com/fewafr)
+  * [someone that helped](https://github.com/helper)
+  * [someone else helped](https://github.com/elsehelper)
+  * [some issue that helped](https://github.com/labchild/portfolio-generator/issues/7)
   
   
   
   ## Questions 
-  Reach out to[fr](fr) with any questions.
+  Reach out to [myemail@email.com](myemail@email.com) with any questions.
 
   Please submit an issue if you have suggestions, requests, or find a bug.
