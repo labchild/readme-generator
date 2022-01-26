@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-
-//const generateMarkdown = require('utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown');
+const writeFile = require('./utils/writeFile');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -121,7 +121,7 @@ const questions = [
     // contributing
     {
         type: 'confirm',
-        name: 'contributeConfirm',
+        name: 'contributors',
         message: 'Would you like to include contributors?',
         default: true
     }
@@ -129,13 +129,13 @@ const questions = [
 
 const promptContribData = projectData => {
     // if add contributors is false, exit inquirer
-    if (!projectData.contributeConfirm) {
+    if (!projectData.contributors) {
         return;
     }
 
     // otherwise prompt for contributor info
-    if (!projectData.contributors) {
-        projectData.contributors = [];
+    if (!projectData.contributorsArr) {
+        projectData.contributorsArr = [];
     }
 
     return inquirer.prompt([
@@ -154,8 +154,8 @@ const promptContribData = projectData => {
         },
         {
             type: 'input',
-            name: 'contribEmail',
-            message: "Enter that contributor's email.",
+            name: 'contribGithub',
+            message: "Enter that contributor's GitHub username.",
             validate: contribInput => {
                 if (contribInput) {
                     return true;
@@ -173,7 +173,7 @@ const promptContribData = projectData => {
         }
     ])
         .then(contribData => {
-            projectData.contributors.push(contribData);
+            projectData.contributorsArr.push(contribData);
             if (contribData.confirmAddContrib) {
                 return promptContribData(projectData);
             } else {
@@ -182,28 +182,23 @@ const promptContribData = projectData => {
         });
 };
 
-inquirer.prompt(questions).then(promptContribData).then(answers => console.log('you did it! ' + JSON.stringify(answers)));
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(fileName, data, err => {
-            // error sends function to catch
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: 'File created!'
-            });
-        });
-    });
-};
-
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+    inquirer.prompt(questions)
+        .then(promptContribData)
+        .then(projectData => {
+            return generateMarkdown(projectData);
+        })
+        .then(markdown => {
+            return writeFile('./dist/README.md', markdown);
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
 
 // Function call to initialize app
-//init();
+init();
