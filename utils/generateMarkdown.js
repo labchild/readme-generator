@@ -3,7 +3,7 @@ function renderLicenseBadge(license) {
   if (!license) {
     return '';
   }
-  
+
   return `![${license}](https://img.shields.io/badge/license-${license[0].replaceAll(' ', '%20')}-brightgreen)`;
 }
 
@@ -98,16 +98,15 @@ const renderContributingSection = ({ contributors, contributorsArr }) => {
     return '';
   }
 
-  return 'contributors!!';
+  console.log(contributorsArr);
 
-  /*
-  contributorsArr.map(person => {
-     return `
+  return ` 
   ## Contributing
-  * [${person.contribName}](https://github.com/${person.contribGithub})
+  ${contributorsArr.map(person => {
+    return `
+  * [${person.name}](https://github.com/${person.github})`;
+  }).join('')}
   `;
-  });
-  */
 }
 
 

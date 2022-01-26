@@ -141,7 +141,7 @@ const promptContribData = projectData => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'contribName',
+            name: 'name',
             message: "Enter a contributor's name.",
             validate: contribInput => {
                 if (contribInput) {
@@ -154,7 +154,7 @@ const promptContribData = projectData => {
         },
         {
             type: 'input',
-            name: 'contribGithub',
+            name: 'github',
             message: "Enter that contributor's GitHub username.",
             validate: contribInput => {
                 if (contribInput) {

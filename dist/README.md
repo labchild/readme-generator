@@ -1,9 +1,8 @@
-# title
-  
-  ![ISC](https://img.shields.io/badge/license-ISC-brightgreen)
+# project
+  ![MIT](https://img.shields.io/badge/license-MIT-brightgreen)
 
   ## Description
-  describe
+  description description description description description description description ^
 
   
   ### Table of Contents
@@ -18,21 +17,24 @@
 
   
   ## Installation
-  install
+   installinstallinstall install install install install install /n installinstallinstall
 
   
   ## Usage
-  instruct
+  usage  usage  usage usage usage usage /n  usage usage usage
 
   
-  ## License 
-  ![ISC](https://img.shields.io/badge/license-ISC-brightgreen)
-  This project falls under a [ISC](https://opensource.org/licenses/ISC) license.
+  ## License ![MIT](https://img.shields.io/badge/license-MIT-brightgreen)
+  This project falls under a [MIT](https://opensource.org/licenses/MIT) license.
   
-  contributors!!
+   
+  ## Contributing
+  
+  * [fewa](https://github.com/fewafr)
+  
   
   
   ## Questions 
-  Reach out to [email](email) with any questions.
+  Reach out to[fr](fr) with any questions.
 
   Please submit an issue if you have suggestions, requests, or find a bug.
