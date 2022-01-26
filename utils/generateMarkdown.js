@@ -21,19 +21,29 @@ function renderLicenseSection(license) {
 }
 
 // render table of contents to include user selected sections
-function renderTableOfContents({ installation, usage, license, contributors }) {
-  const sections = { installation, usage, license, contributors }; 
-  
+function renderTableOfContents({ installation, usage, license, contributors, tests }) {
+  const sections = { installation, usage, license, contributors, tests }; 
+  let sectionTitles = [];
+
+  // create linked text for section titles
   for (var property in sections) {
     const str = property;
     const upperCaseStr = str.charAt(0).toUpperCase() + str.slice(1);
 
-    if (property) {
-      return `
-      * [${upperCaseStr}](#${property})
-      `;
-    }
+    // push markdown string to array
+    sectionTitles.push(`[${upperCaseStr}](${str})`);
   }
+  
+  // then map arr to return joined string to markdown template
+  return `
+  ### Table of Contents
+  ${sectionTitles.map(title => {
+    return `
+  * ${title}
+    `;
+  }).join('')}
+  * [Questions](#questions)
+  `;
 };
 
 // if installation included, function to handle installation section
@@ -99,17 +109,16 @@ function generateMarkdown(data) {
   ## Description
   ${description}
 
-  ### Table of Contents
   ${renderTableOfContents({ installation, usage, license, contributors })}
-  * [Questions and Contact](#questionsandcontact)
 
   ${renderInstallation(installation)}
   ## Usage
   ${usage}
 
   ${renderLicenseSection(license)}
-  ${renderTestsSection(tests)}
   ${renderContributingSection(contributorsArr)}
+  ${renderTestsSection(tests)}
+  
   ## Questions 
   Reach out to [${email}](${email}) with any questions.
 
