@@ -22,7 +22,7 @@ function renderLicenseSection(license) {
 
 // render table of contents to include user selected sections
 function renderTableOfContents({ installation, usage, license, contributors }) {
-  /* const sections = { installation, usage, license, contributors }; 
+  const sections = { installation, usage, license, contributors }; 
   
   for (var property in sections) {
     const str = property;
@@ -33,8 +33,7 @@ function renderTableOfContents({ installation, usage, license, contributors }) {
       * [${upperCaseStr}](#${property})
       `;
     }
-  }*/
-  return '#### so far so good';
+  }
 };
 
 // if installation included, function to handle installation section
