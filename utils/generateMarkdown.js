@@ -145,6 +145,6 @@ function generateMarkdown(data) {
 
   Please submit an issue if you have suggestions, requests, or find a bug.
 `;
-}
+};
 
 module.exports = generateMarkdown;
