@@ -134,11 +134,7 @@ const promptContribData = projectData => {
     }
 
     // otherwise prompt for contributor info
-    if (!projectData.contributorsArr) {
-        projectData.contributorsArr = [];
-    }
-
-    return inquirer.prompt([
+    return projectData.contributorsArr = inquirer.prompt([
         {
             type: 'input',
             name: 'contribName',
@@ -173,7 +169,7 @@ const promptContribData = projectData => {
         }
     ])
         .then(contribData => {
-            projectData.contributorsArr.push(contribData);
+            // projectData.contributorsArr.push(contribData);
             if (contribData.confirmAddContrib) {
                 return promptContribData(projectData);
             } else {

@@ -16,11 +16,13 @@ function renderLicenseLink(license) {}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  return '#### so far so good';
+}
 
 // render table of contents to include user selected sections
-function renderTableOfContents(data) {
-  const sections = { installation, usage, license, contributors }; 
+function renderTableOfContents({ installation, usage, license, contributors }) {
+  /* const sections = { installation, usage, license, contributors }; 
   
   for (var property in sections) {
     const str = property;
@@ -31,23 +33,27 @@ function renderTableOfContents(data) {
       * [${upperCaseStr}](#${property})
       `;
     }
-  }
+  }*/
+  return '#### so far so good';
 };
 
 // if installation included, function to handle installation section
 const renderInstallation = installation => {
-  if (!installation) {
+  /*if (!installation) {
     return '';
   }
 
   return `
   ## Installation
   ${installation}
-  `;
+
+  `;*/
+  return '#### so far so good';
 };
+
 // render tests section
 const renderTestsSection = tests => {
-  if (!tests) {
+  /*if (!tests) {
     return '';
   }
 
@@ -55,43 +61,60 @@ const renderTestsSection = tests => {
   ## Tests
   ${tests}
 
-  `;
+  `;*/
+  return '#### so far so good';
 };
 
 // if include contributing, handle render section
 const renderContributingSection = ({ contributors, contributorsArr }) => {
-  if (!contributors) {
+  /*if (!contributors) {
     return '';
   }
 
   contributorsArr.forEach( person => {
      return `
   ## Contributing
-  * [${person.contribName}](${person.contribGithub})
+  * [${person.contribName}](https://github.com/${person.contribGithub})
   `;
-  });
- 
+  });*/
+  return '#### so far so good';
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
-  ${renderLicenseBadge}
+  const { 
+    title, 
+    description, 
+    usage, 
+    installation, 
+    license, 
+    email,
+    tests,
+    contributors,
+    contributorsArr
+  } = data;
+
+  return `# ${title}
+  ${renderLicenseBadge(license)}
+
   ## Description
   ${description}
 
   ### Table of Contents
-  ${renderTableOfContents}
+  ${renderTableOfContents({ installation, usage, license, contributors })}
+  * [Questions and Contact](#questionsandcontact)
 
-  ${renderInstallation}
-
+  ${renderInstallation(installation)}
   ## Usage
   ${usage}
 
-  ${renderLicenseSection}
-  ${renderTestsSection}
-  ${renderContributingSection}
+  ${renderLicenseSection(license)}
+  ${renderTestsSection(tests)}
+  ${renderContributingSection(contributorsArr)}
+  ## Questions 
+  Reach out to [${email}](${email}) with any questions.
 
+  Please submit an issue if you have suggestions, requests, or find a bug.
 `;
 }
 
