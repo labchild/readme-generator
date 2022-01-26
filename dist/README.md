@@ -1,6 +1,6 @@
 # title
   
-  ![Apache License 2.0](https://img.shields.io/badge/license-Apache%20License%202.0-brightgreen)
+  ![ISC](https://img.shields.io/badge/license-ISC-brightgreen)
 
   ## Description
   describe
@@ -22,17 +22,14 @@
 
   
   ## Usage
-  use
+  instruct
 
   
-  ## License
-  This project falls under a [Apache License 2.0]([Apache License 2.0](https://opensource.org/licenses/Apache-2.0)) license.
+  ## License 
+  ![ISC](https://img.shields.io/badge/license-ISC-brightgreen)
+  This project falls under a [ISC](https://opensource.org/licenses/ISC) license.
   
   contributors!!
-  
-  ## Tests
-  test
-
   
   
   ## Questions 

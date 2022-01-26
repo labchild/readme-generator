@@ -1,21 +1,19 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// function to render license badge
 function renderLicenseBadge(license) {
   if (!license) {
     return '';
   }
   
-  return `
-  ![${license}](https://img.shields.io/badge/license-${license[0].replaceAll(' ', '%20')}-brightgreen)`
+  return `![${license}](https://img.shields.io/badge/license-${license[0].replaceAll(' ', '%20')}-brightgreen)`;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// function to render license link
 function renderLicenseLink(license) {
   if (!license) {
     return '';
   }
 
+  // return link specific to license selected
   switch (license) {
     case 'MIT':
       return `[${license}](https://opensource.org/licenses/MIT)`;
@@ -30,8 +28,7 @@ function renderLicenseLink(license) {
   };
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// render entire license section, including link and badge
 function renderLicenseSection(license) {
   if (!license) {
     return '';
@@ -40,7 +37,7 @@ function renderLicenseSection(license) {
   return `
   ## License ${renderLicenseBadge(license)}
   This project falls under a ${renderLicenseLink(license[0])} license.
-  `
+  `;
 }
 
 // render table of contents to include user selected sections
@@ -114,7 +111,7 @@ const renderContributingSection = ({ contributors, contributorsArr }) => {
 }
 
 
-// TODO: Create a function to generate markdown for README
+// function with page template to generate markdown
 function generateMarkdown(data) {
   const {
     title,
