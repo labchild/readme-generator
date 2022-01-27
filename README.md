@@ -4,7 +4,7 @@ A node.js application that generates a README.md for GitHub repositories.
 ## Description
 This project runs on the command line, prompting the user through a serious of questions relating to their project. Once the user has finished answering questions, a README.md is generated and saved in the project folder for use wherever the user wishes.
 
-A sample README.md is included with this project.
+A [sample README.md](https://github.com/labchild/readme-generator/blob/main/dist/sample-README.md) is included with this project.
 
 ### Table of Contents
 * [Installation](#installation)
