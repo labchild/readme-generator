@@ -190,7 +190,7 @@ function init() {
             return generateMarkdown(projectData);
         })
         .then(markdown => {
-            return writeFile('./dist/sample-README.md', markdown);
+            return writeFile('./dist/README.md', markdown);
         })
         .then(writeFileResponse => {
             console.log(writeFileResponse);

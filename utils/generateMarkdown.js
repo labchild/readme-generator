@@ -98,8 +98,6 @@ const renderContributingSection = ({ contributors, contributorsArr }) => {
     return '';
   }
 
-  console.log(contributorsArr);
-
   return ` 
   ## Contributing
   ${contributorsArr.map(person => {
